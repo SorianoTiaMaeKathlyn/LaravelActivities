@@ -17,6 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Only authenticated user will be able to view posts
+
+//Route::group(['middleware' => 'auth'], function () {
+    Route::resource('/posts', 'App\Http\Controllers\PostController');
+//});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
