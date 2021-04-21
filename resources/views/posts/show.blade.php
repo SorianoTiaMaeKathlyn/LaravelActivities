@@ -15,6 +15,14 @@
                   <p class="card-text">{{ $post->description }}</p>
                   <p class="card-title" ><b> Created At: </b></p>
                   <p class="card-text">{{ $post->created_at }}</p>
+                  <p class="card-text">{{ $post->created_at }}</p>
+                  <p class="card-title" ><b> Post Image: </b></p> 
+                    @if ($post->img)
+                   
+                        <img src="{{ asset('/storage/img/'.$post->img) }} ">
+                    @else
+                        No image available
+                    @endif
                 </div>
               </div>
 
