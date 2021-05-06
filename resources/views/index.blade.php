@@ -21,20 +21,36 @@
             a{
                 font-size: 15px;
             }
-            h5{
-                font-size: 30px;
-                font-weight: bold;
-            }
         </style>
+
+        <!-- Navigation Bar -->
+
+        @if (Route::has('login'))
+        <nav class="navbar navbar-expand-lg" style="background-color:white;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                @auth
+                <a class="nav-item nav-link active" href="{{ url('/home') }}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="{{ url('/posts') }}">Posts</a>
+                @else
+                <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
+                @if (Route::has('register'))
+                <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>
+                @endif
+                @endauth
+              </div>
+            </div>
+          </nav>
+        @endif
 
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
                    
                 <div class="container"> 
-
-                    <h5> POSTS </h5>
-                    <br>
                     <div class="card-deck">
                 
                         @foreach ($posts as $post)

@@ -17,12 +17,14 @@
                   <p class="card-text">{{ $post->created_at }}</p>
                   <p class="card-text">{{ $post->created_at }}</p>
                   <p class="card-title" ><b> Post Image: </b></p> 
-                    @if ($post->img)
-                   
-                        <img src="{{ asset('/storage/img/'.$post->img) }} ">
+                    @if ($post->img != '')
+                    <img src="{{ asset('/storage/img/'.$post->img) }}">
                     @else
                         No image available
                     @endif
+                    <p class="card-title" ></p> 
+                    @include('/posts/comments')
+                
                 </div>
               </div>
 
